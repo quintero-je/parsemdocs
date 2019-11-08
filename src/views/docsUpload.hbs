@@ -1,0 +1,61 @@
+<div class="col-md-12">
+  <div class="card callout callout-info">
+    <div class="card-header">
+      <h3>Upload Files!</h>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <p>You can drag & drop files into this page or select it with 'Add Button'!</p>
+      <form id="fileupload" action="/docs/save" method="POST" enctype="multipart/form-data">
+        <!-- Redirect browsers with JavaScript disabled to the origin page -->
+        <noscript><input type="hidden" name="redirect"
+            value="https://blueimp.github.io/jQuery-File-Upload/" /></noscript>
+        <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+        <div class="fileupload-buttonbar">
+          <div class="">
+            <!-- The fileinput-button span is used to style the file input field as button -->
+            <span class="btn btn-success fileinput-button">
+              <i class="fas fa-plus"></i>
+              <span>Add files...</span>
+              <input type="file" name="files[]" multiple />
+            </span>
+            <button type="submit" class="btn btn-info start">
+              <i class="fas fa-upload"></i>
+              <span>Start upload</span>
+            </button>
+            <button type="reset" class="btn btn-warning cancel">
+              <i class="fas fa-times-circle"></i>
+              <span>Cancel upload</span>
+            </button>
+            <!-- The global file processing state -->
+            <span class="fileupload-process"></span>
+          </div>
+          <!-- The global progress state -->
+          <div class="col-lg-5 fileupload-progress fade">
+            <!-- The global progress bar -->
+
+            <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar progress-bar-success" style="width:0%;"></div>
+            </div>
+            <!-- The extended global progress state -->
+            <div class="progress-extended">&nbsp;</div>
+          </div>
+        </div>
+        <!-- The table listing the files available for upload/download -->
+        <table role="presentation" class="table table-striped">
+          <tbody class="files"></tbody>
+        </table>
+      </form>
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <script>
+    window.onload = function () {
+      document.getElementById('home').classList.add("active");
+    }
+  </script>
+</div>

@@ -1,0 +1,80 @@
+<div class="col-md-12">
+  <div class="card callout callout-success">
+    <div class="card-header">
+      <h3 class="card-title">CSV - Database File</h3>
+      <div class="card-tools">
+        {{#if count}}
+        <a href="/csv/generate" class="btn btn-warning btn-sm"><i class="fas fa-cogs"></i>&nbsp; there is data
+          in the
+          database that has not been converted to csv, Convert now?</a>
+        {{/if}}
+
+        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+          <i class="fas fa-minus"></i>
+        </button>
+        <button type="button" class="btn btn-tool" data-card-widget="remove">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+
+      <table id="example1" class="table table-bordered table-striped">
+        <thead>
+          <tr>
+
+            <th>CSV Name</th>
+            <th>Date</th>
+            <th>Processed Files</th>
+            <th>Download</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each csvs}}
+          <tr>
+
+            <td>{{this.name}} </td>
+            <td>{{this.createdAt}} </td>
+            <td>{{this.files}} </td>
+            <td>
+
+
+              <a href="/downloads/{{this.name}}" class="btn btn-info btn-sm"
+                onclick="  sendF({{this._id}})">&nbsp;&nbsp;<i class="fas fa-download"></i>&nbsp;&nbsp;</a>
+              <form action="/csv/download/{{this}}" name='{{this._id}}' method="POST">
+                <input type="hidden" name="_method" value="POST">
+                <input type="hidden" name="doc" value="{{this._id}}">
+              </form>
+
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+        <tfoot>
+          <tr>
+
+            <th>CSV Name</th>
+            <th>Date</th>
+            <th>Processed Files</th>
+            <th>Actions</th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+</div>
+<!-- /.col -->
+
+<script>
+  function sendF(id) {
+    document.id.submit()
+  }
+</script>
+<script>
+  window.onload = function () {
+    document.getElementById('csvList').classList.add("active");
+  }
+</script>

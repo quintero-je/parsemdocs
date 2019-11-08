@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Parse Massive Docs</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="/dist/css/jsonstyle.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+
+  <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+  <link rel="stylesheet" href="/css/jquery.fileupload.min.css" />
+  <link rel="stylesheet" href="/css/jquery.fileupload-ui.min.css" />
+  <!-- CSS adjustments for browsers with JavaScript disabled -->
+  <noscript>
+    <link rel="stylesheet" href="/css/jquery.fileupload-noscript.min.css" /></noscript>
+  <noscript>
+    <link rel="stylesheet" href="/css/jquery.fileupload-ui-noscript.min.css" /></noscript>
+
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+  <div class="wrapper">
+
+    {{> navigation }}
+    {{> sidebar }}
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      {{>contentHeader}}
+
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+
+          <!-- Main row -->
+          <div class="row">
+            <!-- Left col -->
+
+            {{> messages }}
+            {{> errors }}
+            {{{ body }}}
+
+            <!-- right col -->
+          </div>
+          <!-- /.row (main row) -->
+        </div><!-- /.container-fluid -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    {{> footer }}
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+  </div>
+  <!-- ./wrapper -->
+
+  <!-- jQuery -->
+  <script src="/plugins/jquery/jquery.min.js"></script>
+  <!-- jQuery UI 1.11.4 -->
+  <script src="/plugins/jquery-ui/jquery-ui.min.js"></script>
+  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+  <script>
+    $.widget.bridge('uibutton', $.ui.button);
+  </script>
+  <!-- Bootstrap 4 -->
+  <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- DataTables -->
+  <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script>
+    $(function () {
+      $("#example1").DataTable();
+    });
+  </script>
+  <!-- overlayScrollbars -->
+  <script src="/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="/dist/js/adminlte.min.js"></script>
+  <script src="/dist/js/jsonstyle.min.js"></script>
+
+
+  <script id="template-upload" type="text/x-tmpl">
+      {% for (var i=0, file; file=o.files[i]; i++) { %}
+          <tr class="template-upload">
+              <td>
+                  {% if (window.innerWidth > 480 || !o.options.loadImageFileTypes.test(file.type)) { %}
+                      <p class="name">{%=file.name%}</p>
+                  {% } %}
+                  <strong class="error text-danger"></strong>
+              </td>
+              <td>
+                  <p class="size">Processing...</p>
+                  <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar progress-bar-success" style="width:0%;"></div></div>
+              </td>
+              <td>
+                  {% if (!o.options.autoUpload && o.options.edit && o.options.loadImageFileTypes.test(file.type)) { %}
+                    <button class="btn btn-success edit" data-index="{%=i%}" disabled>
+                        <i class="fas fa-edit"></i>
+                        <span>Edit</span>
+                    </button>
+                  {% } %}
+                  {% if (!i && !o.options.autoUpload) { %}
+                      <button class="btn btn-primary start" disabled>
+                          <i class="fas fa-upload"></i>
+                          <span>Start</span>
+                      </button>
+                  {% } %}
+                  {% if (!i) { %}
+                      <button class="btn btn-warning cancel">
+                          <i class="fas fa-times-circle"></i>
+                          <span>Cancel</span>
+                      </button>
+                  {% } %}
+              </td>
+          </tr>
+      {% } %}
+    </script>
+  <!-- The template to display files available for download -->
+  <script id="template-download" type="text/x-tmpl">
+
+      {% for (var i=0, file; file=o.files[i]; i++) { %}
+      {% console.log(o);%}
+          <tr class="template-download">
+              
+              <td>
+                  {% if (window.innerWidth > 480 || !file.thumbnailUrl) { %}
+                      <p class="name">
+                          {% if (file.url) { %}
+                              <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" {%=file.thumbnailUrl?'data-gallery':''%}>{%=file.name%}</a>
+                          {% } else { %}
+                              <span>{%=file.name%}</span>
+                          {% } %}
+                      </p>
+                  {% } %}
+                  {% if (file.error) { %}
+                      <div><span class="label label-danger">Error</span> {%=file.error%}</div>
+                  {% } %}
+              </td>
+              <td>
+                  <span class="size">{%=o.formatFileSize(file.size)%}</span>
+              </td>
+              <td>
+                  Uploaded
+              </td>
+          </tr>
+      {% } %}
+    </script>
+
+
+  <!-- The Templates plugin is included to render the upload/download listings -->
+  <script src="/js/tmpl.min.js"></script>
+  <!-- The Load Image plugin is included  the preview images and image resizing functionality -->
+  <script src="/js/load-image.all.min.js"></script>
+  <!-- The Canvas to Blob plugin is included  image resizing functionality -->
+  <script src="/js/canvas-to-blob.min.js"></script>
+  <!-- The Iframe Transport is required  browsers without support  XHR file uploads -->
+  <script src="/js/jquery.iframe-transport.min.js"></script>
+  <!-- The basic File Upload plugin -->
+  <script src="/js/jquery.fileupload.min.js"></script>
+  <!-- The File Upload processing plugin -->
+  <script src="/js/jquery.fileupload-process.min.js"></script>
+  <!-- The File Upload image preview & resize plugin -->
+  <script src="/js/jquery.fileupload-image.min.js"></script>
+  <!-- The File Upload audio preview plugin -->
+  <script src="/js/jquery.fileupload-validate.min.js"></script>
+  <!-- The File Upload user interface plugin -->
+  <script src="/js/jquery.fileupload-ui.min.js"></script>
+  <!-- The main application script -->
+  <script src="/js/demo.min.js"></script>
+  <!-- The XDomainRequest Transport is included for cross-domain file deletion for IE 8 and IE 9 -->
+  <!--[if (gte IE 8)&(lt IE 10)]>
+      <script src="/js/cors/jquery.xdr-transport.js"></script>
+    <![endif]-->
+
+  <!--<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+     alert("The URL of this page is: " + window.location.href);
+  });-->
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<div class="col-md-12">
+
+  <div class="card callout callout-success">
+    <div class="card-header">
+      <h3 class="card-title">Processed Documents History</h3>
+      <div class="card-tools">
+        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+          <i class="fas fa-minus"></i>
+        </button>
+        <button type="button" class="btn btn-tool" data-card-widget="remove">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <table id="example1" class="table table-bordered table-striped">
+        <thead>
+          <tr>
+
+            <th>Doc Name</th>
+            <th>CSV name</th>
+            <th>Processed</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each docs}}
+          <tr>
+
+            <td>{{this.filename}}</td>
+            <td>{{this.csvname}}</td>
+            <td>{{this.createdAt}}</td>
+            <td>
+              <form action="/docs/edit/{{this._id}}" method="POST">
+                <input type="hidden" name="_method" value="POST">
+                <input type="hidden" name="doc" value="{{this}}">
+                <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-redo-alt"></i>&nbsp;Update</button>
+              </form>
+            </td>
+          </tr>
+          {{/each}}
+
+
+        </tbody>
+        <tfoot>
+          <tr>
+
+            <th>Doc Name</th>
+            <th>CSV name</th>
+            <th>Processed</th>
+            <th>Actions</th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+  <script>
+    window.onload = function () {
+      document.getElementById('docsHistory').classList.add("active");
+    }
+  </script>
+</div>
+<!-- /.col -->

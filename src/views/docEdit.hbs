@@ -1,0 +1,189 @@
+<div class="col-md-12">
+    <!-- general form elements disabled -->
+    <div class="card card-success">
+        <div class="card-header">
+            <h3 class="card-title">Please update "{{doc.post_title}}" data.</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <form role="form" action="/docs/update/{{doc._id}}" method="POST">
+                <div class="form-group">
+                    <label>Post Title</label>
+                    <textarea name="post_title" class="form-control" rows="2"
+                        placeholder="post_title ...">{{doc.post_title}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Post Content</label>
+                    <textarea name="post_content" class="form-control" rows="2"
+                        placeholder="post_content ...">{{doc.post_content}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Post Excerpt</label>
+                    <textarea name="post_excerpt" class="form-control" rows="2"
+                        placeholder="post_excerpt ...">{{doc.post_excerpt}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Featured Image</label>
+                    <input type="text" name="featured_image" class="form-control" placeholder="featured_image (url)..."
+                        value="{{doc.featured_image}}" />
+                </div>
+                <div class="form-group">
+                    <label>Company Id</label>
+                    <input type="text" name="_company_id" class="form-control" placeholder="_company_id ..."
+                        value="{{doc._company_id}}" />
+                </div>
+                <div class="form-group">
+                    <label>NDC</label>
+                    <textarea name="ndc" class="form-control" rows="2" placeholder="ndc ...">{{doc.ndc}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Imprint Id</label>
+                    <input type="text" name="_imprint_id" class="form-control" placeholder="_imprint_id ..."
+                        value="{{doc._imprint_id}}" />
+                </div>
+                <div class="form-group">
+                    <label>General</label>
+                    <textarea name="_general" class="form-control" rows="2"
+                        placeholder="_general ...">{{doc._general}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Composition</label>
+                    <textarea name="_composition" class="form-control" rows="2"
+                        placeholder="_composition ...">{{doc._composition}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Properties</label>
+                    <textarea name="_properties" class="form-control" rows="2"
+                        placeholder="_properties ...">{{doc._properties}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Pharmacokinetics</label>
+                    <textarea name="_pharmacokinetics" class="form-control" rows="2"
+                        placeholder="_pharmacokinetics ...">{{doc._pharmacokinetics}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Pharmacodynamics</label>
+                    <textarea name="_pharmacodynamics" class="form-control" rows="2"
+                        placeholder="_pharmacodynamics ...">{{doc._pharmacodynamics}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Preclinical Safety Data</label>
+                    <textarea name="_preclinical_safety_data" class="form-control" rows="2"
+                        placeholder="_preclinical_safety_data ...">{{doc._preclinical_safety_data}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Incompatibilities</label>
+                    <textarea name="_incompatibilities" class="form-control" rows="2"
+                        placeholder="_incompatibilities ...">{{doc._incompatibilities}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Indications</label>
+                    <textarea name="_indications" class="form-control" rows="2"
+                        placeholder="_indications ...">{{doc._indications}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Contra Indications</label>
+                    <textarea name="_contra_indications" class="form-control" rows="2"
+                        placeholder="_contra_indications ...">{{doc._contra_indications}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Side Effects</label>
+                    <textarea name="_side_effects" class="form-control" rows="2"
+                        placeholder="_side_effects ...">{{doc._side_effects}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Overdosage</label>
+                    <textarea name="_overdosage" class="form-control" rows="2"
+                        placeholder="_overdosage ...">{{doc._overdosage}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Precautions</label>
+                    <textarea name="_precautions" class="form-control" rows="2"
+                        placeholder="_precautions ...">{{doc._precautions}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Pregnancy and Lactation</label>
+                    <textarea name="_pregnancy" class="form-control" rows="2"
+                        placeholder="_pregnancy ...">{{doc._pregnancy}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Effects Driving and using Machines</label>
+                    <textarea name="_effects_driving_um" class="form-control" rows="2"
+                        placeholder="_effects_driving_um ...">{{doc._effects_driving_um}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Drug Interactions</label>
+                    <textarea name="_drug_interactions" class="form-control" rows="2"
+                        placeholder="_drug_interactions ...">{{doc._drug_interactions}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Dosage Administration</label>
+                    <textarea name="_dosage_administration" class="form-control" rows="2"
+                        placeholder="_dosage_administration ...">{{doc._dosage_administration}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Storage</label>
+                    <textarea name="_storage" class="form-control" rows="2"
+                        placeholder="_storage ...">{{doc._storage}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Packaging</label>
+                    <textarea name="_packaging" class="form-control" rows="2"
+                        placeholder="_packaging ...">{{doc._packaging}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Handling and Disposal</label>
+                    <textarea name="_handling_disposal" class="form-control" rows="2"
+                        placeholder="_handling_disposal ...">{{doc._handling_disposal}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Pharmaceutical Form</label>
+                    <textarea name="_pharmaceutical_form" class="form-control" rows="2"
+                        placeholder="_pharmaceutical_form ...">{{doc._pharmaceutical_form}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>eMEMI Drug Category</label>
+                    <input type="text" name="ememi_drug_category" class="form-control"
+                        placeholder="ememi_drug_category ..." value="{{doc.ememi_drug_category}}" />
+                </div>
+                <div class="form-group">
+                    <label>eMEMI Generic Category</label>
+                    <input type="text" name="ememi_generic_category" class="form-control"
+                        placeholder="ememi_generic_category ..." value="{{doc.ememi_generic_category}}" />
+                </div>
+                <div class="form-group">
+                    <label>eMEMI Index</label>
+                    <input type="text" name="ememi_index" class="form-control" placeholder="ememi_index ..."
+                        value="{{doc.ememi_index}}" />
+                </div>
+                <div class="form-group">
+                    <label>eMEMI Solution</label>
+                    <input type="text" name="ememi_solution" class="form-control" placeholder="ememi_solution ..."
+                        value="{{doc.ememi_solution}}" />
+                </div>
+                <div class="form-group">
+                    <label>Drug Color</label>
+                    <input type="text" name="drug_color" class="form-control" placeholder="drug_color ..."
+                        value="{{doc.drug_color}}" />
+                </div>
+                <div class="form-group">
+                    <label>Drug Shape</label>
+                    <input type="text" name="drug_shape" class="form-control" placeholder="drug_shape ..."
+                        value="{{doc.drug_shape}}" />
+                </div>
+                <input type="hidden" name="csvname" value="">
+                <input type="hidden" name="filename" value="{{doc.filename}}">
+
+                <button type="submit" class="btn btn-block bg-gradient-primary">Save Data</button>
+
+
+            </form>
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <script>
+        window.onload = function () {
+            document.getElementById('docsHistory').classList.add("active");
+        }
+    </script>
+</div>
